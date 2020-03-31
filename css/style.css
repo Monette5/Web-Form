@@ -20,19 +20,6 @@ h1 {
     z-index: 2;
     line-height: 83px;
 }
-
-  .container, .modal, .modal-dialog {
-    width: 50%;
-      padding: 5px;
-      border-radius: 6px;
-      background: #f6f5f8;
-      box-shadow: 0 0 8px  #669999; 
-      display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: 5%;
-  }
   
   input, .modal {
     color: rgb(125, 48, 212);
@@ -73,7 +60,7 @@ h1 {
     letter-spacing: .1em;
     font-family: Roboto, Arial, sans-serif;
     font-size: 14px;
-    color: white;
+    color: white !important;
   }
   
   .modal-content{
@@ -96,14 +83,16 @@ h1 {
   }
   
   .btn {
-    color: #0b0214;
-    background: transparent;
+    color:white!important;
+    background: rgb(37, 15, 88) !important;
     border: 3px solid #04010e;
     border-radius: 5px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
+    margin-bottom: 10px;
+    max-width: 200px
   }
   .btn:hover {
     background: #c7f8f9;
