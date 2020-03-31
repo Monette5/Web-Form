@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="Scripts/jquery-2.2.0.min.js"></script>
+  <script src="Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class='banner'>
+       <h1>Developer Endpoint Functions</h1>
+ </div>
+<div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Enter URL</h3>
+          <form id="addInfo" action="">
+            <div class="form-group">
+              <input class="form-control" type="text" name="url" placeholder="URL" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="key" placeholder="Key" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="apiKey" placeholder="API Key" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="parameter" placeholder="Parameter" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="con_id" placeholder="Con Id" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="source_type" placeholder="Source Type" required>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="dataset" placeholder="Dataset" required>
+            </div>
+            
+            <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+          </form>
+        </div>
+        <div class="col-md-8">
+          <h3>Output</h3>
+          <table id="infoTable" class="table table-striped">
+            <tr>
+              <th style="font-size: 20px;color: rgb(7, 1, 12);">Data</th>
+               </tr>
+          <th>URL</th>
+          <th>Key</th>
+          <th>API Key</th>
+          <th>Parameter</th>
+          <th>Con Id</th>
+          <th>Source Type</th>
+          <th>Dataset</th>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div style="display:none;">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Update Info</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+</div>
+    <script src="Scripts/index.js"></script>
+    
+</body>
+</html>
