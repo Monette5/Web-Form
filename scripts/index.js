@@ -1,31 +1,5 @@
 $(document).ready(function () {
-  //May use at some point to prefill data
-  /* var info = [
-    {
-      id: 1,
-      uid: "1489",
-      cid: "17305",
-      pds_key: "9xapJucRnQ5LUWrQE7qEqtx8jgqyvHXD",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
-    },
-    {
-      id: 2,
-      uid: "1490",
-      cid: "17305",
-      pds_key: "ddVUQ5v8X9BL3H27WlZqScGxgGsiWsoe",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
-    },
-    {
-      id: 3,
-      uid: "1491",
-      cid: "17305",
-      pds_key: "hudrHay5mhhJmBrEkKlSOSNUMXc4YXI0",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
-    }
-  ]; */
+
   
   $("form").submit(function(e) {
     e.preventDefault();
