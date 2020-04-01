@@ -20,34 +20,27 @@
 <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h3>Enter URL</h3>
+          <h3>Enter Information</h3>
           <form class="form-row" id="addInfo" action="">
             <div class="form-group">
-              <label for="url">URL</label>
-              <input class="form-control" type="text" name="url" placeholder="URL" required>
+              <label for="uid">UID</label>
+              <input class="form-control" type="text" name="uid" placeholder="UID" required>
             </div>
             <div class="form-group">
-              <label for="key">Key</label>
-              <input class="form-control" type="text" name="key" placeholder="Key" required>
+              <label for="pds_key">Connection Key</label>
+              <input class="form-control" type="text" name="pds_key" placeholder="PDS Key" required>
             </div>
             <div class="form-group">
-              <label for="apiKey">API Key</label>
-              <input class="form-control" type="text" name="apiKey" placeholder="API Key" required>
+              <label for="api_Key">API Key</label>
+              <input class="form-control" type="text" name="api_key" placeholder="API Key" required>
             </div>
             <div class="form-group">
-              <label for="parameter">Parameter</label>
-              <input class="form-control" type="text" name="parameter" placeholder="Parameter" required>
+              <label for="con_id">Connection ID</label>
+              <input class="form-control" type="text" name="cid" placeholder="Con Id" required>
             </div>
-            <div class="form-group">
-              <label for="con_id">Con Id</label>
-              <input class="form-control" type="text" name="con_id" placeholder="Con Id" required>
-            </div>
-            <div class="form-group">
-              <label for="source_type">Source Type</label>
-              <input class="form-control" type="text" name="source_type" placeholder="Source Type" required>
             <div class="form-group">
               <label for="dataset">Dataset</label>
-              <input class="form-control" type="text" name="dataset" placeholder="Dataset" required>
+              <input class="form-control" type="text" name="data_set" placeholder="Dataset" required>
             </div>
             
             <button class="btn form-control" type="submit">SUBMIT</button>
@@ -55,22 +48,18 @@
         </div>
         <div class="col-md-8">
           <h3>Output</h3>
-          <table id="infoTable" class="table table-striped">
-            <tr>
-              <th style="font-size: 20px;color: rgb(7, 1, 12);">Data</th>
-               </tr>
-          <th>URL</th>
-          <th>Key</th>
-          <th>API Key</th>
-          <th>Parameter</th>
-          <th>Con Id</th>
-          <th>Source Type</th>
-          <th>Dataset</th>
+          <table id="infoTable" class="table table-striped hidden-on-load" >
+      <thead>
+               <th class="table-column-title">Field</th>
+               <th class="table-column-title">Value</th>
+              </thead>
+
+              <tbody id="table-data"></tbody>
           </table>
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal possible future use for making changes to saved information -->
     <div style="display:none;">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">

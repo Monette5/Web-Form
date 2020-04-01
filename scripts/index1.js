@@ -1,116 +1,65 @@
-$(document).ready(function () {
-  //May use at some point to prefill data
-  /* var info = [
+var info = [
     {
       id: 1,
-      uid: "1489",
-      cid: "17305",
-      pds_key: "9xapJucRnQ5LUWrQE7qEqtx8jgqyvHXD",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
+      uid: "uid",
+      pds_key: "pds_key",
+      api_key: "api_key",
+      cid: "cid",
+     data_set: "data_set"
     },
     {
       id: 2,
-      uid: "1490",
-      cid: "17305",
-      pds_key: "ddVUQ5v8X9BL3H27WlZqScGxgGsiWsoe",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
+      uid: "uid1",
+      pds_key: "Key1",
+      api_key: "apiKey1",
+      cid: "cid1",
+      data_set: "dataset1"
     },
     {
       id: 3,
-      uid: "1491",
-      cid: "17305",
-      pds_key: "hudrHay5mhhJmBrEkKlSOSNUMXc4YXI0",
-      api_key: "jPssYUMVVNaLaYPIbY7P9ESGzdksCOlf",
-      data_set: "field_ds_personal_details"
+      uid: "uid2",
+      pds_key: "Key2",
+      api_key: "apiKey2",
+      cid: "cid2",
+      data_set: "dataset2"
     }
-  ]; */
+  ];
+  
+  $.each(info, function(i, inf) {
+    appendToInfoTable(inf);
+  });
   
   $("form").submit(function(e) {
     e.preventDefault();
   });
   
-  $("form").submit(function() {
-
-    $("#table-data").html(""); // Clears table data
-
+  $("form#addInfo").submit(function() {
     var inf = {};
-    var uid = $('input[name="uid"]').val();
-   
-    var pds_key = $('input[name="pds_key"]').val();
-   
-    var api_key = $('input[name="api_key"]').val();
-  
-    var cid = $('input[name="cid"]').val();
- 
-    var data_set = $('input[name="data_set"]').val();
-
-    //Possible future use to add example data
-/*     if (uid && api_key && pds_key && cid
-       && data_set) {
+    var uidInput = $('input[name="uid"]').val().trim();
+    var pds_keyInput = $('input[name="pds_key"]').val().trim();
+    var api_keyInput = $('input[name="api_key"]').val().trim();
+    var cidInput = $('input[name="cid"]').val().trim();
+    var data_setInput = $('input[name="data_set"]').val().trim();
+    if (uidInput && api_keyInput && paramaterInput && pds_keyInput && cidInput
+       && source_typeInput && data_setInput) {
       $(this).serializeArray().map(function(data) {
         inf[data.uid] = data.value;
       });
-
-    var lastEntry = info[Object.keys(info).sort().pop()];
-    inf.id = lastEntry.id + 1;
-    info.push(inf);
-       }
- */    var conid = uid + "-" + cid;
-    //info.forEach(function(inf, i) {
-    var url = "https://sbx-api.mydex.org/api/pds/pds/" + uid + ".jsonp?key=" + pds_key + "&api_key=" + api_key + "&con_id=" + cid + "&source_type=connection&dataset=" + data_set;
-    
-    var ajax = "\n\t$.ajax({\n\t\turl:\"" + url + "\",\n\t\tdataType:\"jsonp\",\n\t\tcrossDomain:true,\n\t" + "}).done(function(response) { \n\t\t// Changed this in code\n\t\t// Handle response\n\t});";
-      // addInfo(url);
-     if (uid == "") {
-      alert("Please enter the UID");
-    } 
-    else {
-      $.ajax({
-      
-      url: url,
-      dataType: "jsonp",
-      crossDomain: true
-
-    }).done(function (response) {
-   
-      if (response.hasOwnProperty("error "+ response.error)) {
-        alert("error");
-      }
-      else {
-        // Unpacks recieved JSON object and displays in the table.
-        var received_data = response[data_set];
-    
-        var fields = received_data.instance_0;
-        for (var field in fields) {
-          var temp = fields[field];
-          var field_cleaned = string_cleaner(field);
-          $("#table-data").append("<tr><td>" + field_cleaned + " </td><td>"
-          + temp.value + "</td></tr>");
-        $("#infoTable").show();
-      }
-
-}
-
-});
-    }
-});
+      var lastEntry = info[Object.keys(info).sort().pop()];
+      inf.id = lastEntry.id + 1;
   
-  function string_cleaner(string) {
-
-    string = (string.substring((string.search("_")+1),string.length));
-    string = (string.substring((string.search("_")+1),string.length));
-    string = string.replace("_"," ");
-    var tempstr1 = string.substring(0,1);
-    tempstr1 = tempstr1.toUpperCase();
-    var tempstr2 = string.substring(1,string.length);
-    string = tempstr1 + tempstr2;
-    return(string);
+      addInfo(inf);
+    } else {
+      alert("All fields must have a valid value.");
+    }
+  });
+  
+  function addInfo(inf) {
+    info.push(inf);
+    appendToInfoTable(inf);
   }
-  //The following code is  for possible future use for persistent data and can be used to delete and update from the table, if the table wasn't cleared between uses.
-
-  /* function editInfo(id) {
+  
+  function editInfo(id) {
     info.forEach(function(inf, i) {
       if (inf.id == id) {
         $(".modal-body").empty().append(`
@@ -133,8 +82,8 @@ $(document).ready(function () {
               `);
       }
     });
-  } 
- 
+  }
+  
   function deleteInfo(id) {
     var action = confirm("Are you sure you want to delete this item?");
     var msg = "Item deleted successfully!";
@@ -203,11 +152,22 @@ $(document).ready(function () {
       `);
   }
   
-// Could add these buttons to the table to make changes
+  function appendToInfoTable(inf) {
+    $("#infoTable > tbody:last-child").append(`
+          <tr id="inf-${inf.id}">
+              <td class="infoData" uid="uid">${inf.uid}</td>
+              '<td class="infoData" name="pds_key">${inf.pds_key}</td>
+              '<td class="infoData" name="api_key">${inf.api_key}</td>
+              '<td class="userData" name="cid">${inf.cid}</td>
+              '<td class="userData" name="datatset">${inf.datatset}</td>   
+              </tr> 
+         
+          
+      `);
+  }
        /* '<tr><td align="center">
                   <button class="btn btn-success form-control" onClick="editInfo(${inf.id})" data-toggle="modal" data-target="#myModal")">Do Stuff</button>
               </td></tr>
               <tr><td align="center">
                   <button class="btn btn-danger form-control" onClick="deleteInfo(${inf.id})">Delete Stuff</button>
               </td></tr> */
-});
