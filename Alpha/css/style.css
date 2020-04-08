@@ -1,0 +1,107 @@
+body {
+    background: #f6f5f8;
+    color: #0b0214;
+    font-family: monospace;
+  }
+  .banner {
+    position: relative;
+    height: 100px;
+    background-size: cover;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+h1 {
+    position: absolute;
+    margin: 0;
+    font-size: 40px;
+    color: rgb(7, 1, 12);
+    z-index: 2;
+    line-height: 83px;
+}
+  
+  input, .modal {
+    color: rgb(125, 48, 212);
+  }
+  #infoTable{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+  }
+  #infoTable td, #infoTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #infoTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #infoTable tr:hover {background-color: #ddd;}
+
+  .table-striped > tbody > tr:nth-child(2n + 1) > td,
+  .table-striped > tbody > tr:nth-child(2n + 1) > th {
+    background: #f6f5f8;
+  }
+  .row .alert {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  th, td {
+    border-top: none !important;
+  }
+  
+  h3 {
+    background-color: rgb(37, 15, 88);
+    padding: 12px;
+    border-top-right-radius: 20px;
+    font-weight: bolder;
+    letter-spacing: .1em;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: white !important;
+  }
+  
+  .modal-content{
+    border-radius: 0;
+  }
+  
+  .modal-header, .modal-footer {
+    background-color:  rgb(37, 15, 88);
+    color: white;
+    border: 0;
+  }
+  
+  .modal-body {
+    background:  rgb(37, 15, 88);
+    color: #0b0214;
+  }
+  
+  .close, .close:hover {
+    color: #0b0214;
+  }
+  
+  .btn {
+    color:white!important;
+    background: rgb(37, 15, 88) !important;
+    border: 3px solid #04010e;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    margin-bottom: 10px;
+    max-width: 200px
+  }
+  .btn:hover {
+    background: #c7f8f9;
+    color: #6ab1c9;
+    border: 3px solid #6ab1c9;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  .btn:active {
+    -webkit-transform: translate(5px, 5px);
+    transform: translate(5px, 5px);
+  }
