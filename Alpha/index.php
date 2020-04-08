@@ -31,11 +31,10 @@ session_start();
        <h1>Developer Endpoint Functions</h1>
  </div>
 <div class="container">
-    <form action="proxy-pds.php" method="get" id="getdata">
+    <form class="form-row" action="proxy-pds.php" method="get" id="getdata">
       <div class="row">
         <div class="col-md-6">
           <h3>Enter Information</h3>
-          <form class="form-row" id="addInfo" action="">
             <div class="form-group">
               <label for="uid">UID</label>
               <input class="form-control" type="text" id="uid" name="uid" placeholder="UID" required>
@@ -74,7 +73,7 @@ session_start();
       </div>
     </div>
 
-    <!-- <script src="scripts/index.js"></script> -->
+    <script src="scripts/index.js"></script>
     
 </body>
 </html>

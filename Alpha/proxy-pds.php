@@ -4,6 +4,7 @@
 session_start();
 header('Content-Type: application/json');
 define('MYDEX_PDS_PATH', 'https://sbx.mydex.org/pds/pds');
+
 //Read raw POST data and decode JSON
 //$postdata_raw = file_get_contents("php://input"); 
 //$postdata = json_decode($postdata_raw);
