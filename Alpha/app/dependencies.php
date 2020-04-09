@@ -1,19 +1,28 @@
 <?php
+declare(strict_types=1);
 
-// Get the container
-$container = $app->getContainer();
+use DI\ContainerBuilder;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Monolog\Processor\UidProcessor;
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 
+return function (ContainerBuilder $containerBuilder) {
+    $containerBuilder->addDefinitions([
+        LoggerInterface::class => function (ContainerInterface $c) {
+            $settings = $c->get('settings');
 
+            $loggerSettings = $settings['logger'];
+            $logger = new Logger($loggerSettings['name']);
 
-// Twig view dependency
-$container['view'] = function ($c) {
+            $processor = new UidProcessor();
+            $logger->pushProcessor($processor);
 
-    $cf = $c->get('settings')['view'];
-    $view = new \Slim\Views\Twig($cf['path'], $cf['twig']);
-    $view->addExtension(new \Slim\Views\TwigExtension(
-        $c->router,
-        $c->request->getUri()
-    ));
+            $handler = new StreamHandler($loggerSettings['path'], $loggerSettings['level']);
+            $logger->pushHandler($handler);
 
-    return $view;
+            return $logger;
+        },
+    ]);
 };
