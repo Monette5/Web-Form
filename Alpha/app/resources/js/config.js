@@ -1,7 +1,7 @@
 // This file holds global app config variables.
 
 // Set the environment variables based on the url.
-var windowLocationOrigin = document.location.protocol + '//' + document.location.host;
+//var windowLocationOrigin = document.location.protocol + '//' + document.location.host;
 // Set global app config vars.
 window.appVars = {
   name : 'Monette Broken',

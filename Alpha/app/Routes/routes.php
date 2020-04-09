@@ -7,15 +7,14 @@
     use Psr\Http\Message\ResponseInterface as Response;
 
 
-
     // HOME ROUTE
     // 
     $app->get('/', function (Request $request, Response $response, $args)   {
 
         $vars = [
             'page' => [
-            'title' => 'Welcome - Alpha Inc.',
-            'description' => 'Welcome to the official page of Alpha Inc.'
+            'title' => 'Welcome.',
+            'description' => 'Welcome to the official page of Alpha'
             ],
         ];  
 
@@ -29,11 +28,11 @@
 
     // ABOUT ROUTE
     // 
-    $app->get('/about', function (Request $request, Response $response, $args)   {
+/*     $app->get('/about', function (Request $request, Response $response, $args)   {
 
         $vars = [
             'page' => [
-            'title' => 'About Us - Alpha Inc.',
+            'title' => 'About Us',
             'description' => 'We\'re a multi-national company specialized in high tech and robotics.'
             ],
         ];  
@@ -42,21 +41,18 @@
 
     })->setName('about');
 
+ */
 
 
 
-
-    // ABOUT ROUTE
+    // ROUTE
     // 
-    $app->get('/contact', function (Request $request, Response $response, $args)   {
+   // $app->get('/contact', function (Request $request, Response $response, $args)   {
+        //Mydex Callback
+$app->get('/api/pds', function (Request $request, Response $response, $args)   {
 
-        $vars = [
-            'page' => [
-            'title' => 'About Us - Alpha Inc.',
-            'description' => 'Drop us a line or get in touch for any enquires.'
-            ],
-        ];  
+    
 
-        return $this->view->render($response, 'contact.twig', $vars);
+        return $this->view->render($response);
 
-    })->setName('contact');
+    });

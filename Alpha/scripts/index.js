@@ -1,5 +1,5 @@
 
-$("getdata").submit(function () {
+$("form#getdata").submit(function() {
 
  var url = "https://sbx-api.mydex.org/api/pds/pds/" + $('uid') + ".jsonp?key=" + $('key') + "&api_key=" + $('api_key') + "&con_id=" + $('con_id') + "&source_type=connection&dataset=" + $('dataset');
     // Call the proxy php file to avoid cross-domain api issues.
@@ -15,7 +15,7 @@ $("getdata").submit(function () {
       else {
         // Unpacks recieved JSON object and displays in the table.
         var received_data = response[dataset];
-    
+    console.log(received_data);
         var fields = received_data.instance_0;
         for (var field in fields) {
           var temp = fields[field];
@@ -30,8 +30,6 @@ $("getdata").submit(function () {
 });
     
 
-
-  
   function string_cleaner(string) {
 
     string = (string.substring((string.search("_")+1),string.length));

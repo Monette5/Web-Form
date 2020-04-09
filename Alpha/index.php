@@ -31,7 +31,7 @@ session_start();
        <h1>Developer Endpoint Functions</h1>
  </div>
 <div class="container">
-    <form class="form-row" action="proxy-pds.php" method="get" id="getdata">
+    <form class="form-row" action="proxy-pds.php" method="post" id="getdata">
       <div class="row">
         <div class="col-md-6">
           <h3>Enter Information</h3>
