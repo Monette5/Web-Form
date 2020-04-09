@@ -6,10 +6,12 @@
 // Run Slim
 session_start();
 
-//if($debug != '0') {
-//  syslog(LOG_INFO,"session: " . print_r($_SESSION,true));
-//}
-//$app->run(); 
+if(isset($_POST['submit'])){
+
+  //  To redirect form on a particular page
+  header("Location: /?status=success");
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +61,8 @@ session_start();
             <button class="btn form-control" type="submit">SUBMIT</button>
           </form>
         </div>
+ 
+   
         <div class="col-md-8">
           <h3>Output</h3>
           <table id="infoTable" class="table table-striped hidden-on-load" >

@@ -1,34 +1,40 @@
 
-$("form#getdata").submit(function() {
-
- var url = "https://sbx-api.mydex.org/api/pds/pds/" + $('uid') + ".jsonp?key=" + $('key') + "&api_key=" + $('api_key') + "&con_id=" + $('con_id') + "&source_type=connection&dataset=" + $('dataset');
-    // Call the proxy php file to avoid cross-domain api issues.
-    $.ajax({
-      'url' : url,
-      'contentType' : 'application/json',
-      'dataType' : 'jsonP',
-    }).done(function (response) {
+$("#getdata").on('submit', function(e) {
+  e.preventDefault(); //Prevents default submit
+          var form = $(this); 
+          var post_data = form.serialize(); //Serialized the form data for process.php
+          
+          $.ajax({
+              type: 'POST',
+              url: 'proxy-pds.php', // Your form script
+              data: post_data,
+                           
+              }).done(function (response) {
    
-      if (response.hasOwnProperty("error "+ response.error)) {
-        alert("error");
-      }
-      else {
-        // Unpacks recieved JSON object and displays in the table.
-        var received_data = response[dataset];
-    console.log(received_data);
-        var fields = received_data.instance_0;
-        for (var field in fields) {
-          var temp = fields[field];
-          var field_cleaned = string_cleaner(field);
-          $("#table-data").append("<tr><td>" + field_cleaned + " </td><td>"
-          + temp.value + "</td></tr>");
-        $("#infoTable").show();
-      }
+                if (response.hasOwnProperty("error "+ response.error)) {
+                  alert("error");
+                }
+                else {
+                
+                  var obj = JSON.parse(response);
+                  var dataset = $('input[name="dataset"]').val();
+                
+                  var received_data = obj[dataset];
+                
+                  var fields = received_data.instance_0;
+                  
+                  for (var field in fields) {
+                    var temp = fields[field];
+                    var field_cleaned = string_cleaner(field);
+                    $("#table-data").append("<tr><td>" + field_cleaned + " </td><td>"
+                    + temp.value + "</td></tr>");
+                  $("#infoTable").show();
+                }
+    }
+    });
 
-}
 
-});
-    
+  });
 
   function string_cleaner(string) {
 
@@ -54,4 +60,3 @@ function string_cleaner(string) {
   string = tempstr1 + tempstr2;
   return(string);
 }
-});

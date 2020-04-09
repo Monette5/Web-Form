@@ -1,8 +1,8 @@
 <?php
 //include 'config.php';
 
-//session_start();
-header('Content-Type: application/json');
+
+//header('Content-Type: application/json');
 //define('MYDEX_PDS_PATH', 'https://sbx.mydex.org/pds/pds');
 
 //Read raw POST data and decode JSON
@@ -10,11 +10,6 @@ $postdata_raw = file_get_contents("php://input");
 $postdata = json_decode($postdata_raw);
 
 
-
-//$api_key = $_GET['api_key'];
-//$source_type = "connection";
-//$con_id = $_GET['con_id'];
-//$dataset = $_GET['dataset'];
 $instance[0] = 0;
 
 $uid = $_POST['uid'];
@@ -51,10 +46,10 @@ $data['ds_browsing_history']['browsing_history_visit_date'] = '1397550510';
 
 
 $arguments_transactional = implode('&', $auth_data);
-//$mydex_api_url = "https://sbx-api.mydex.org/api/pds/pds/$uid.json?key=" + $key + "&api_key=" + $api_key + "&con_id=" + $cid + "&source_type=connection&dataset=" + $dataset;
+
 $mydex_api_url = "https://sbx-api.mydex.org/api/pds/pds/" . $uid . '.json?' . $arguments_transactional;
- // . $arguments_transactional;
-echo $mydex_api_url;
+
+//echo $mydex_api_url;
 $ch = curl_init($mydex_api_url);
 // set URL and other appropriate options
 /* $options = array(CURLOPT_URL => $mydex_api_url,
@@ -71,6 +66,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 ]);
 $response = curl_exec($ch);
 curl_close($ch);
+$ar = json_decode($response);
 echo $response . PHP_EOL;
 //curl_setopt($ch, CURLOPT_URL, $mydex_api_url);
 /* curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
